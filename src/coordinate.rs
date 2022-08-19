@@ -1,7 +1,9 @@
 use std::ops;
 
-const rotation_matrix : &'static [i32] = &[0, -1, 1, 0];
+// 90 degrees CCW
+const ROTATION_MATRIX : &'static [i32] = &[0, -1, 1, 0];
 
+#[derive(Clone)]
 pub struct Coordinate {
     x : i32,
     y : i32
@@ -31,11 +33,47 @@ impl ops::Sub<Coordinate> for Coordinate {
 
 impl Coordinate {
     pub fn rotate(self, pivot : Coordinate) -> Coordinate {
-        let tmp = self - pivot;
-        Coordinate {
-            x : tmp.x * rotation_matrix[0] + tmp.y * rotation_matrix[1],
-            y : tmp.x * rotation_matrix[2] + tmp.y * rotation_matrix[3]
-        }
+        let tmp = self - pivot.clone();
+        let rotated = Coordinate {
+            x : tmp.x * ROTATION_MATRIX[0] + tmp.y * ROTATION_MATRIX[1],
+            y : tmp.x * ROTATION_MATRIX[2] + tmp.y * ROTATION_MATRIX[3]
+        };
+        rotated + pivot
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use crate::coordinate::Coordinate;
+
+    #[test]
+    fn add() {
+        let c1 = Coordinate {x:1,y:2};
+        let c2 = Coordinate {x:3,y:4};
+        let c3 = c1 + c2;
+        assert_eq!(c3.x, 4);
+        assert_eq!(c3.y, 6);
+    }
+
+    
+    #[test]
+    fn sub() {
+        let c1 = Coordinate {x:1,y:2};
+        let c2 = Coordinate {x:3,y:4};
+        let c3 = c1 - c2;
+        assert_eq!(c3.x, -2);
+        assert_eq!(c3.y, -2);
+    }
+
+    
+    
+    #[test]
+    fn rotation() {
+        let c1 = Coordinate {x:1,y:2};
+        let c2 = Coordinate {x:3,y:4};
+        let c3 = c1.rotate(c2);
+        assert_eq!(c3.x, 5);
+        assert_eq!(c3.y, 2);
     }
 }
 
