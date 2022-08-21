@@ -7,7 +7,7 @@ pub enum Cell {
 }
 
 
-struct Board {  
+pub struct Board {  
     rows : usize,
     columns : usize,
     cells : Vec<Cell>,

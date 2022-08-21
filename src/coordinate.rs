@@ -5,8 +5,8 @@ const ROTATION_MATRIX : &'static [i32] = &[0, -1, 1, 0];
 
 #[derive(Clone)]
 pub struct Coordinate {
-    x : i32,
-    y : i32
+    pub x : i32,
+    pub y : i32
 }
 
 impl ops::Add<Coordinate> for Coordinate {
