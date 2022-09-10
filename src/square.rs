@@ -6,6 +6,10 @@ pub struct Square {
 }
 
 impl Square {
+    pub fn new(x : i32, y : i32, color : Color) -> Square {
+        Square {position : Coordinate {x:x, y:y}, color : color.clone()}
+    }
+
     pub fn move_square(&mut self, direction : Direction, board : &Board) {
         let new_position = self.position.clone() + direction.to_coordinates();
 

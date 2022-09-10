@@ -1,7 +1,7 @@
 use std::ops;
 
 // 90 degrees CCW
-const ROTATION_MATRIX : &'static [i32] = &[0, -1, 1, 0];
+const ROTATION_MATRIX : &'static [f32] = &[0f32, -1f32, 1f32, 0f32];
 
 #[derive(Clone, PartialEq, Eq)]
 pub struct Coordinate {

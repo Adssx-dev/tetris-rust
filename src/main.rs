@@ -4,7 +4,10 @@ mod color;
 mod direction;
 mod piece;
 mod square;
+mod game;
+
+use crate::game::Game;
 
 fn main() {
-    println!("Hello, world!");
+    let g = Game::new();
 }
