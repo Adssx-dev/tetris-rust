@@ -3,7 +3,7 @@ use std::ops;
 // 90 degrees CCW
 const ROTATION_MATRIX : &'static [i32] = &[0, -1, 1, 0];
 
-#[derive(Clone)]
+#[derive(Clone, PartialEq, Eq)]
 pub struct Coordinate {
     pub x : i32,
     pub y : i32
@@ -41,6 +41,7 @@ impl Coordinate {
         rotated + pivot
     }
 }
+
 
 #[cfg(test)]
 mod tests {

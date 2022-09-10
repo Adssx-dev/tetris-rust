@@ -17,7 +17,6 @@ impl Piece {
                 p.move_square(direction.clone(), board);
             }
         }
-
     }
 
     fn whole_piece_can_move(&self, direction : Direction, board : &Board) -> bool {
