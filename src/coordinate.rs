@@ -3,10 +3,10 @@ use std::ops;
 // 90 degrees CCW
 const ROTATION_MATRIX : &'static [f32] = &[0f32, -1f32, 1f32, 0f32];
 
-#[derive(Clone, PartialEq, Eq)]
+#[derive(Clone, PartialEq)]
 pub struct Coordinate {
-    pub x : i32,
-    pub y : i32
+    pub x : f32,
+    pub y : f32
 }
 
 impl ops::Add<Coordinate> for Coordinate {
@@ -49,32 +49,32 @@ mod tests {
 
     #[test]
     fn add() {
-        let c1 = Coordinate {x:1,y:2};
-        let c2 = Coordinate {x:3,y:4};
+        let c1 = Coordinate {x:1f32,y:2f32};
+        let c2 = Coordinate {x:3f32,y:4f32};
         let c3 = c1 + c2;
-        assert_eq!(c3.x, 4);
-        assert_eq!(c3.y, 6);
+        assert_eq!(c3.x, 4f32);
+        assert_eq!(c3.y, 6f32);
     }
 
     
     #[test]
     fn sub() {
-        let c1 = Coordinate {x:1,y:2};
-        let c2 = Coordinate {x:3,y:4};
+        let c1 = Coordinate {x:1f32,y:2f32};
+        let c2 = Coordinate {x:3f32,y:4f32};
         let c3 = c1 - c2;
-        assert_eq!(c3.x, -2);
-        assert_eq!(c3.y, -2);
+        assert_eq!(c3.x, -2f32);
+        assert_eq!(c3.y, -2f32);
     }
 
     
     
     #[test]
     fn rotation() {
-        let c1 = Coordinate {x:1,y:2};
-        let c2 = Coordinate {x:3,y:4};
+        let c1 = Coordinate {x:1f32,y:2f32};
+        let c2 = Coordinate {x:3f32,y:4f32};
         let c3 = c1.rotate(c2);
-        assert_eq!(c3.x, 5);
-        assert_eq!(c3.y, 2);
+        assert_eq!(c3.x, 5f32);
+        assert_eq!(c3.y, 2f32);
     }
 }
 

@@ -6,7 +6,7 @@ use crate::coordinate::Coordinate;
 
 pub struct Piece {
     squares : Vec<Square>,
-    pivot_index : usize,
+    pivot_coordinates : Coordinate,
     position : Coordinate,
 }
 
@@ -24,13 +24,13 @@ impl Piece {
         let color = Color {r:255, g:0,b:255};
         Piece {
             squares : vec![
-                Square::new(0, 0, color.clone()),
-                Square::new(0, 1, color.clone()),
-                Square::new(0, 2, color.clone()),
-                Square::new(0, 3, color.clone()),
+                Square::new(0.0, 0.0, color.clone()),
+                Square::new(1.0, 0.0, color.clone()),
+                Square::new(2.0, 0.0, color.clone()),
+                Square::new(3.0, 0.0, color.clone()),
             ],
-            pivot_index:2,
-            position : Coordinate { x: 0, y: 0 }
+            pivot_coordinates : Coordinate { x: 2.0, y: 1.0 },
+            position : Coordinate { x: 0.0, y: 0.0 }
         }
     }
     
@@ -39,13 +39,13 @@ impl Piece {
         let color = Color {r:255, g:255,b:0};
         Piece {
             squares : vec![
-                Square::new(0, 0, color.clone()),
-                Square::new(0, 1, color.clone()),
-                Square::new(1, 0, color.clone()),
-                Square::new(1, 1, color.clone()),
+                Square::new(0.0, 0.0, color.clone()),
+                Square::new(0.0, 1.0, color.clone()),
+                Square::new(1.0, 0.0, color.clone()),
+                Square::new(1.0, 1.0, color.clone()),
             ],
-            pivot_index:2,
-            position : Coordinate { x: 0, y: 0 }
+            pivot_coordinates : Coordinate { x: 1.0, y: 1.0 },
+            position : Coordinate { x: 0.0, y: 0.0 }
         }
     }
 
@@ -53,13 +53,13 @@ impl Piece {
         let color = Color {r:0, g:0,b:255};
         Piece {
             squares : vec![
-                Square::new(0, 0, color.clone()),
-                Square::new(0, 1, color.clone()),
-                Square::new(0, 2, color.clone()),
-                Square::new(1, 1, color.clone()),
+                Square::new(0.0, 1.0, color.clone()),
+                Square::new(1.0, 1.0, color.clone()),
+                Square::new(2.0, 1.0, color.clone()),
+                Square::new(1.0, 0.0, color.clone()),
             ],
-            pivot_index:2,
-            position : Coordinate { x: 0, y: 0 }
+            pivot_coordinates : Coordinate { x: 1.5, y: 1.5 },
+            position : Coordinate { x: 0.0, y: 0.0 }
         }
     }
 
@@ -67,13 +67,13 @@ impl Piece {
         let color = Color {r:255, g:0,b:0};
         Piece {
             squares : vec![
-                Square::new(0, 0, color.clone()),
-                Square::new(0, 1, color.clone()),
-                Square::new(0, 2, color.clone()),
-                Square::new(1, 2, color.clone()),
+                Square::new(0.0, 1.0, color.clone()),
+                Square::new(1.0, 1.0, color.clone()),
+                Square::new(2.0, 1.0, color.clone()),
+                Square::new(2.0, 0.0, color.clone()),
             ],
-            pivot_index:2,
-            position : Coordinate { x: 0, y: 0 }
+            pivot_coordinates : Coordinate { x: 1.5, y: 1.5 },
+            position : Coordinate { x: 0.0, y: 0.0 }
         }
     }
 
@@ -81,13 +81,13 @@ impl Piece {
         let color = Color {r:0, g:255,b:0};
         Piece {
             squares : vec![
-                Square::new(0, 0, color.clone()),
-                Square::new(0, 1, color.clone()),
-                Square::new(0, 2, color.clone()),
-                Square::new(1, 0, color.clone()),
+                Square::new(0.0, 0.0, color.clone()),
+                Square::new(0.0, 1.0, color.clone()),
+                Square::new(1.0, 1.0, color.clone()),
+                Square::new(2.0, 1.0, color.clone()),
             ],
-            pivot_index:2,
-            position : Coordinate { x: 0, y: 0 }
+            pivot_coordinates : Coordinate { x: 1.5, y: 1.5 },
+            position : Coordinate { x: 0.0, y: 0.0 }
         }
     }
 
@@ -95,13 +95,13 @@ impl Piece {
         let color = Color {r:255, g:255,b:255};
         Piece {
             squares : vec![
-                Square::new(1, 0, color.clone()),
-                Square::new(1, 1, color.clone()),
-                Square::new(0, 1, color.clone()),
-                Square::new(0, 2, color.clone()),
+                Square::new(0.0, 0.0, color.clone()),
+                Square::new(1.0, 0.0, color.clone()),
+                Square::new(1.0, 1.0, color.clone()),
+                Square::new(2.0, 1.0, color.clone()),
             ],
-            pivot_index:2,
-            position : Coordinate { x: 0, y: 0 }
+            pivot_coordinates : Coordinate { x: 1.5, y: 1.5 },
+            position : Coordinate { x: 0.0, y: 0.0 }
         }
     }
 
@@ -109,13 +109,13 @@ impl Piece {
         let color = Color {r:0, g:255,b:255};
         Piece {
             squares : vec![
-                Square::new(0, 0, color.clone()),
-                Square::new(0, 1, color.clone()),
-                Square::new(1, 1, color.clone()),
-                Square::new(2, 1, color.clone()),
+                Square::new(0.0, 1.0, color.clone()),
+                Square::new(1.0, 1.0, color.clone()),
+                Square::new(1.0, 0.0, color.clone()),
+                Square::new(2.0, 0.0, color.clone()),
             ],
-            pivot_index:2,
-            position : Coordinate { x: 0, y: 0 }
+            pivot_coordinates : Coordinate { x: 1.5, y: 1.5 },
+            position : Coordinate { x: 0.0, y: 0.0 }
         }
     }
 

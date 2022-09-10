@@ -6,7 +6,7 @@ pub struct Square {
 }
 
 impl Square {
-    pub fn new(x : i32, y : i32, color : Color) -> Square {
+    pub fn new(x : f32, y : f32, color : Color) -> Square {
         Square {position : Coordinate {x:x, y:y}, color : color.clone()}
     }
 
@@ -24,6 +24,7 @@ impl Square {
         let new_position = self.calculate_new_position(direction);
         self.can_move_position(new_position, board)
     }
+    
     
     fn can_move_position(&self, new_position : Coordinate, board : &Board) -> bool {
         match board.is_cell_empty(new_position.y as usize, new_position.x as usize) {
@@ -47,13 +48,13 @@ mod tests {
     #[test]
     fn calculate_new_position() {
         let s = Square {
-            position : Coordinate {x: 1, y:1},
+            position : Coordinate {x: 1f32, y:1f32},
             color : Color {r:0, g:0, b:0}
         };
 
-        assert!(s.calculate_new_position(Direction::Left) ==  Coordinate {x:0, y:1});
-        assert!(s.calculate_new_position(Direction::Right) ==  Coordinate {x:2, y:1});
-        assert!(s.calculate_new_position(Direction::Down) ==  Coordinate {x:1, y:2});
+        assert!(s.calculate_new_position(Direction::Left) ==  Coordinate {x:0f32, y:1f32});
+        assert!(s.calculate_new_position(Direction::Right) ==  Coordinate {x:2f32, y:1f32});
+        assert!(s.calculate_new_position(Direction::Down) ==  Coordinate {x:1f32, y:2f32});
     }
 
     #[test]
@@ -70,7 +71,7 @@ mod tests {
         b.set_cell(Cell::Full(red.clone()), 1, 1);
 
         let s = Square {
-            position : Coordinate {x: 1, y:0},
+            position : Coordinate {x: 1f32, y:0f32},
             color : Color {r:0, g:0, b:0}
         };
 
@@ -79,7 +80,7 @@ mod tests {
         assert!(!s.can_move_direction(Direction::Down, &b));
         
         let s2 = Square {
-            position : Coordinate {x: 2, y:2},
+            position : Coordinate {x: 2f32, y:2f32},
             color : Color {r:0, g:0, b:0}
         };
 
@@ -102,17 +103,17 @@ mod tests {
         b.set_cell(Cell::Full(red.clone()), 1, 1);
 
         let mut s = Square {
-            position : Coordinate {x: 0, y:1},
+            position : Coordinate {x: 0f32, y:1f32},
             color : Color {r:0, g:0, b:0}
         };
 
         s.move_square(Direction::Down, &b);
-        assert!(s.position ==  Coordinate {x:0, y:2});
+        assert!(s.position ==  Coordinate {x:0f32, y:2f32});
 
         s.move_square(Direction::Right, &b);
-        assert!(s.position ==  Coordinate {x:1, y:2});
+        assert!(s.position ==  Coordinate {x:1f32, y:2f32});
 
         s.move_square(Direction::Left, &b);
-        assert!(s.position ==  Coordinate {x:0, y:2});
+        assert!(s.position ==  Coordinate {x:0f32, y:2f32});
     }
 }
