@@ -24,7 +24,31 @@ impl Square {
         let new_position = self.calculate_new_position(direction);
         self.can_move_position(new_position, board)
     }
+
+    pub fn rotate(&mut self, pivot : Coordinate, board : &Board) {
+        if self.can_rotate(pivot.clone(), board) {
+            self.position = self.get_position_after_rotation(pivot);
+        }
+    }
+
+    pub fn can_rotate(&self, pivot : Coordinate, board : &Board) -> bool {
+        let new_position = self.get_position_after_rotation(pivot);
+        self.can_move_position(new_position, board)
+    }
     
+
+    fn get_position_after_rotation (&self, pivot : Coordinate) -> Coordinate {
+        let mut new_coordinates = Coordinate {
+            x : self.position.x + 0.5,
+            y : self.position.y + 0.5,
+        };
+
+        new_coordinates = new_coordinates.rotate(pivot);
+        
+        new_coordinates.x -= 0.5;
+        new_coordinates.y -= 0.5;
+        new_coordinates
+    }
     
     fn can_move_position(&self, new_position : Coordinate, board : &Board) -> bool {
         match board.is_cell_empty(new_position.y as usize, new_position.x as usize) {

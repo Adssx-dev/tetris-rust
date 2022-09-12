@@ -20,6 +20,16 @@ impl Piece {
         }
     }
 
+    pub fn rotate(&mut self, board : &Board) {
+        let all_can_rotate = self.squares.iter().all(|s| s.can_rotate(self.pivot_coordinates.clone(), board));
+        
+        if  all_can_rotate {
+            for square in &mut self.squares {
+                square.rotate(self.pivot_coordinates.clone(), board);
+            }
+        }
+    }
+
     pub fn piece_i() -> Piece {
         let color = Color {r:255, g:0,b:255};
         Piece {
